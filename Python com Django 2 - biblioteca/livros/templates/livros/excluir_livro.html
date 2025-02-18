@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Livro</title>
+    <link rel="stylesheet" href="{% static 'css/excluir_livro.css' %}">
+</head>
+<body>
+    <h1>Excluir Livro</h1>
+    <p>Tem certeza de que deseja excluir "{{ livro.titulo }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+    <a href="{% url 'lista_livros' %}">Cancelar</a>
+</body>
+</html>

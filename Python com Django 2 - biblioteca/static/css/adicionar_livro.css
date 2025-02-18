@@ -1,0 +1,65 @@
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f4f8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Formulário */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+form input,
+form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    font-size: 1em;
+}
+
+form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+/* Link */
+a {
+    text-decoration: none;
+    color: #3498db;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}

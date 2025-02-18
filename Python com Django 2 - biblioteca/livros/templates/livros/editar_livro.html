@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Livro</title>
+    <link rel="stylesheet" href="{% static 'css/editar_livro.css' %}">
+</head>
+<body>
+    <h1>Editar Livro</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+    <a href="{% url 'lista_livros' %}">Voltar</a>
+</body>
+</html>
