@@ -1,45 +1,45 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .models import Livro
-from .forms import LivroForm
-from django.db.models import Q
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Filme
+from .forms import FilmeForm
 
-
-def lista_livros(request):
-    query = request.GET.get('q', '')  # Captura o termo de busca
+def listar_filmes(request):
+    query = request.GET.get('q')
     if query:
-        livros = Livro.objects.filter(Q(titulo__icontains=query))  # Filtra livros pelo título
+        filmes = Filme.objects.filter(titulo__icontains=query)
     else:
-        livros = Livro.objects.all()
-    return render(request, "livros/lista_livros.html", {"livros": livros, "query": query})
+        filmes = Filme.objects.all()
+    return render(request, 'filmes/listar.html', {'filmes': filmes})
 
-def detalhes_livro(request, livro_id):
-    livro = get_object_or_404(Livro, id=livro_id)
-    return render(request, "livros/detalhes_livro.html", {"livro": livro})
-
-def adicionar_livro(request):
-    if request.method == "POST":
-        form = LivroForm(request.POST)
+def adicionar_filme(request):
+    if request.method == 'POST':
+        form = FilmeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect("lista_livros")
+            return redirect('listar_filmes')
     else:
-        form = LivroForm()
-    return render(request, "livros/adicionar_livro.html", {"form": form})
+        form = FilmeForm()
+    return render(request, 'filmes/adicionar_filme.html', {'form': form})
 
-def editar_livro(request, livro_id):
-    livro = get_object_or_404(Livro, id=livro_id)
-    if request.method == "POST":
-        form = LivroForm(request.POST, instance=livro)
+
+def detalhes_filme(request, filme_id):
+    filme = get_object_or_404(Filme, pk=filme_id)
+    return render(request, 'filmes/detalhes.html', {'filme': filme})
+
+def editar_filme(request, filme_id):
+    filme = get_object_or_404(Filme, pk=filme_id)
+    if request.method == 'POST':
+        form = FilmeForm(request.POST, request.FILES, instance=filme)
         if form.is_valid():
             form.save()
-            return redirect("lista_livros")
+            return redirect('detalhes_filme', filme_id=filme.id)
     else:
-        form = LivroForm(instance=livro)
-    return render(request, "livros/editar_livro.html", {"form": form, "livro": livro})
+        form = FilmeForm(instance=filme)
+    return render(request, 'filmes/editar.html', {'form': form, 'filme': filme})
 
-def excluir_livro(request, livro_id):
-    livro = get_object_or_404(Livro, id=livro_id)
-    if request.method == "POST":
-        livro.delete()
-        return redirect("lista_livros")
-    return render(request, "livros/excluir_livro.html", {"livro": livro})
+
+def excluir_filme(request, filme_id):
+    filme = get_object_or_404(Filme, pk=filme_id)
+    if request.method == 'POST':
+        filme.delete()
+        return redirect('listar_filmes')
+    return render(request, 'filmes/excluir.html', {'filme': filme})
