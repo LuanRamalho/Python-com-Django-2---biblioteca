@@ -6,7 +6,7 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Ajuste o alinhamento para não centralizar todos os elementos */
     flex-direction: column;
 }
 
@@ -16,6 +16,71 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2.5em;
+    margin: auto;
+}
+
+/* Barra de busca */
+.barra-busca-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px; /* Ajuste o espaçamento entre a barra de busca e o botão */
+    height: 50px;
+    margin-left: 100px;
+}
+
+form {
+    display: flex;
+    width: 100%;
+}
+
+input[type="text"] {
+    padding: 15px;
+    width: 75%;  /* Ajuste o tamanho do campo de busca */
+    font-size: 1.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+button {
+    padding: 10px;
+    background-color: #009029;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.6em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #8C00A5;
+}
+
+/* Link adicionar livro */
+.adicionar-livro-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Garante uma distância clara entre a barra de busca e o botão Adicionar Livro */
+    margin: auto;
+}
+
+a.adicionar-livro {
+    text-decoration: none;
+    background-color: #3498db;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+a.adicionar-livro:hover {
+    background-color: #2980b9;
 }
 
 /* Lista de livros */
@@ -23,7 +88,7 @@ ul {
     list-style-type: none;
     padding: 0;
     width: 100%;
-    max-width: 600px;
+    max-width: 750px;
     margin: 20px auto;
 }
 
@@ -48,21 +113,6 @@ ul li a {
 
 ul li a:hover {
     color: #3498db;
-}
-
-/* Link adicionar livro */
-a.adicionar-livro {
-    text-decoration: none;
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-a.adicionar-livro:hover {
-    background-color: #2980b9;
 }
 
 /* Animações */
