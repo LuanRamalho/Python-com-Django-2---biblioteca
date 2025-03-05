@@ -1,10 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Livro
 from .forms import LivroForm
+from django.db.models import Q
+
 
 def lista_livros(request):
-    livros = Livro.objects.all()
-    return render(request, "livros/lista_livros.html", {"livros": livros})
+    query = request.GET.get('q', '')  # Captura o termo de busca
+    if query:
+        livros = Livro.objects.filter(Q(titulo__icontains=query))  # Filtra livros pelo título
+    else:
+        livros = Livro.objects.all()
+    return render(request, "livros/lista_livros.html", {"livros": livros, "query": query})
 
 def detalhes_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
