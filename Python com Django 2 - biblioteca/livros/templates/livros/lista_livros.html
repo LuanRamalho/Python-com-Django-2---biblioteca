@@ -9,7 +9,22 @@
 </head>
 <body>
     <h1>Lista de Livros</h1>
-    <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a>
+
+    <!-- Barra de busca e botão -->
+        <div class="barra-busca-container">
+            <form method="get" action="{% url 'lista_livros' %}">
+                <input type="text" name="q" value="{{ query }}" placeholder="Pesquisar por título" />
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <!-- Link adicionar livro -->
+        <div class="adicionar-livro-container">
+            <a href="{% url 'adicionar_livro' %}" class="adicionar-livro">Adicionar Livro</a>
+        </div>
+    </div>
+
+    <!-- Lista de livros -->
     <ul>
         {% for livro in livros %}
             <li>
